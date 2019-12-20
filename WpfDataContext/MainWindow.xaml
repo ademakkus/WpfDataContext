@@ -1,13 +1,27 @@
-﻿<Window x:Class="WpfDataContext.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfDataContext"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin='10'>
+﻿<Window
+	x:Class="WpfDataContext.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:WpfDataContext"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Title="MainWindow"
+	Width="800"
+	Height="450"
+	mc:Ignorable="d">
+	<Window.Resources>
+		<Style TargetType="TextBlock">
+			<Setter Property="Background" Value="#b2dfdb" />
+			<Setter Property="FontSize" Value="24pt" />
+			<Setter Property="Foreground" Value="#004d40" />
+			<Setter Property="VerticalAlignment" Value="Center" />
+			<Setter Property="FlowDirection" Value="LeftToRight" />
+			<Setter Property="Width" Value="Auto" />
+		</Style>
+	</Window.Resources>
+	<Grid Margin="10" DataContext="{Binding ElementName=cmbName, Path=SelectedItem}">
 		<Grid.RowDefinitions>
+			<RowDefinition />
 			<RowDefinition />
 			<RowDefinition />
 			<RowDefinition />
@@ -16,6 +30,57 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
-    </Grid>
+		<TextBlock
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="4"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Text="STUDENTS INFORMATION" />
+		<TextBlock
+			Grid.Row="2"
+			Grid.Column="0"
+			Text="First Name" />
+		<TextBlock
+			Grid.Row="2"
+			Grid.Column="1"
+			Text="Sure Name" />
+		<TextBlock
+			Grid.Row="2"
+			Grid.Column="2"
+			Text="Age" />
+		<TextBlock
+			Grid.Row="2"
+			Grid.Column="3"
+			Text="Departmant" />
+		<ComboBox
+			Name="cmbName"
+			DisplayMemberPath="FirstName"
+			SelectedIndex="0" />
+		<!--  textboxes  -->
+		<TextBox
+			Name="txtFirstName"
+			Grid.Row="3"
+			Grid.Column="0"
+			Text="{Binding FirstName}" />
+		<TextBox
+			Name="txtSureName"
+			Grid.Row="3"
+			Grid.Column="1"
+			Text="{Binding SureName}" />
+		<TextBox
+			Name="txtAge"
+			Grid.Row="3"
+			Grid.Column="2"
+			Text="{Binding Age}" />
+
+		<TextBox
+			Name="txtDepartmant"
+			Grid.Row="3"
+			Grid.Column="3"
+			Text="{Binding Departmant}" />
+	</Grid>
 </Window>

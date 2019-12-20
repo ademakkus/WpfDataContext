@@ -23,6 +23,26 @@ namespace WpfDataContext
 		public MainWindow()
 		{
 			InitializeComponent();
+			Student[] student ={
+				new Student("Adem","Akkuş",35,"Information Technologies"),
+				new Student("Furkan","Akkuş",10,"Secondary School"),
+				new Student("Ayşenur","Akkuş",10,"Primary School"),
+				new Student("Gülten","Akkuş",35,"Trukish Literature")
+			};
+			Grid grd = new Grid();
+			grd.DataContext = student;
+			cmbName.ItemsSource = student;
+			Binding firstNameBinding = new Binding("FirstName");
+			txtFirstName.SetBinding(ContentProperty, firstNameBinding);
+			///
+			Binding sureNameBinding = new Binding("SureName");
+			txtSureName.SetBinding(ContentProperty, sureNameBinding);
+			///
+			Binding ageBinding = new Binding("Age");
+			txtAge.SetBinding(ContentProperty, ageBinding);
+			///
+			Binding departmantNameBinding = new Binding("Departmant");
+			txtDepartmant.SetBinding(ContentProperty, departmantNameBinding);
 		}
 	}
 }
